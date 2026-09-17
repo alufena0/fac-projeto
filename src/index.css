@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* Estilos de interface anos 90/2000 institucional e convidativa (GeoCities / Web Clássica) */
+:root {
+  --font-main: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Courier New", Courier, Lucida Console, monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #cce5ff;
+  color: #111111;
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #003366;
+  font-family: var(--font-main);
+}
+
+/* Links clássicos da web antiga com azul tradicional sublinhado */
+a.classic-link, .classic-link {
+  color: #0000cc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a.classic-link:hover, .classic-link:hover {
+  color: #000088;
+}
+
+a.classic-link:visited {
+  color: #551a8b;
+}
+
+/* Botões com efeito de relevo 3D clássico chanfrado e fundo levemente azulado */
+.btn-classic {
+  display: inline-block;
+  background-color: #e2effd;
+  color: #002244;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: normal;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #50769d;
+  border-bottom: 2px solid #50769d;
+  padding: 3px 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0px;
+  user-select: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-classic:hover {
+  background-color: #f0f7ff;
+}
+
+.btn-classic:active {
+  border-top: 2px solid #50769d;
+  border-left: 2px solid #50769d;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  background-color: #c7e0fc;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+.btn-classic-primary {
+  font-weight: bold;
+  background-color: #b8daff;
+  border-right: 2px solid #003366;
+  border-bottom: 2px solid #003366;
+}
+
+.btn-classic:disabled {
+  color: #888888;
+  border-color: #cccccc #999999 #999999 #cccccc;
+  cursor: not-allowed;
+  background-color: #dce7f2;
+}
+
+/* Tabelas com bordas sólidas nítidas e cabeçalho em destaque azul */
+.table-classic {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #003366;
+  background-color: #ffffff;
+}
+
+.table-classic th {
+  background-color: #b8daff;
+  color: #002b49;
+  border: 1px solid #003366;
+  padding: 6px 10px;
+  font-weight: bold;
+  text-align: left;
+  font-size: 13px;
+  font-family: var(--font-main);
+}
+
+.table-classic td {
+  border: 1px solid #7ea4cc;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.table-classic tr:nth-child(even) td {
+  background-color: #f4f9ff;
+}
+
+.table-classic tr:hover td {
+  background-color: #e5f1ff;
+}
+
+/* Painel / Moldura retangular sólida com cabeçalho em cor de destaque */
+.box-classic {
+  border: 1px solid #003366;
+  background-color: #ffffff;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.box-classic-header {
+  background-color: #b8daff;
+  border-bottom: 1px solid #003366;
+  color: #002b49;
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 14px;
+  margin: -12px -16px 12px -16px;
+  font-family: var(--font-main);
+}
+
+/* Inputs e Textareas no estilo tradicional */
+.input-classic {
+  border: 1px solid #4a709c;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 4px 8px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  border-radius: 0px;
+  outline: none;
+}
+
+.input-classic:focus {
+  border-color: #003366;
+  background-color: #fffff8;
+}
+
+/* Régua horizontal nítida tradicional */
+.classic-hr {
+  border: 0;
+  border-top: 1px solid #50769d;
+  border-bottom: 1px solid #ffffff;
+  height: 2px;
+  margin: 14px 0;
+}
+
+/* Bloco de Código C com destaque de sintaxe clássico (mantido legível e discreto) */
+.code-window {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.45;
+  background-color: #ffffff;
+  border: 1px solid #4a709c;
+  padding: 10px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.c-kw { color: #000099; font-weight: bold; }
+.c-fn { color: #005072; font-weight: bold; }
+.c-str { color: #9c1313; }
+.c-num { color: #0000ee; }
+.c-com { color: #166e22; font-style: italic; }
+.c-prep { color: #6b1464; font-weight: bold; }
+.c-plain { color: #111111; }
+
+/* Barra de Linha de Código */
+.line-num {
+  display: inline-block;
+  width: 32px;
+  color: #777777;
+  text-align: right;
+  padding-right: 12px;
+  margin-right: 8px;
+  border-right: 1px solid #d0d0d0;
+  user-select: none;
+}

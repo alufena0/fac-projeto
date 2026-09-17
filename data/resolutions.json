@@ -1,0 +1,56 @@
+[
+  {
+    "id": "res-101",
+    "exerciseId": "ex-1-1",
+    "author": "Marcos Vinicius (Monitor FAC)",
+    "comment": "Cálculo direto aplicando porcentagens de distribuidor e impostos sobre o custo de fábrica.",
+    "createdAt": "12/03/2026 10:15",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\n\nint main(void) {\n    double custoFabrica, percDistribuidor, percImpostos;\n    double custoConsumidor;\n\n    printf(\"Digite o custo de fabrica do veiculo (R$): \");\n    if (scanf(\"%lf\", &custoFabrica) != 1) {\n        return 1;\n    }\n\n    printf(\"Digite a porcentagem do distribuidor (ex: 28): \");\n    if (scanf(\"%lf\", &percDistribuidor) != 1) {\n        return 1;\n    }\n\n    printf(\"Digite a porcentagem dos impostos (ex: 45): \");\n    if (scanf(\"%lf\", &percImpostos) != 1) {\n        return 1;\n    }\n\n    custoConsumidor = custoFabrica + (custoFabrica * (percDistribuidor / 100.0)) + (custoFabrica * (percImpostos / 100.0));\n\n    printf(\"Custo ao consumidor: R$ %.2f\\n\", custoConsumidor);\n\n    return 0;\n}"
+  },
+  {
+    "id": "res-102",
+    "exerciseId": "ex-1-5",
+    "author": "Beatriz Duarte",
+    "comment": "Decomposição sucessiva de quantia inteira com divisão e resto em vetor de cédulas e moedas.",
+    "createdAt": "14/03/2026 16:40",
+    "linesCount": 26,
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int valor, resto;\n    int valores[7] = {100, 50, 20, 10, 5, 2, 1};\n    int i, qtd;\n\n    printf(\"Digite o valor em reais: \");\n    if (scanf(\"%d\", &valor) != 1) {\n        return 1;\n    }\n\n    printf(\"Valor informado: R$ %d,00\\n\", valor);\n    resto = valor;\n\n    for (i = 0; i < 7; i++) {\n        qtd = resto / valores[i];\n        resto = resto % valores[i];\n        if (valores[i] >= 2) {\n            printf(\"%d nota(s) de R$ %d,00\\n\", qtd, valores[i]);\n        } else {\n            printf(\"%d moeda(s) de R$ %d,00\\n\", qtd, valores[i]);\n        }\n    }\n\n    return 0;\n}"
+  },
+  {
+    "id": "res-201",
+    "exerciseId": "ex-2-1",
+    "author": "Lucas Ferreira",
+    "comment": "Implementação da verificação em faixas do IMC segundo a tabela da OMS.",
+    "createdAt": "18/03/2026 09:20",
+    "linesCount": 38,
+    "code": "#include <stdio.h>\n\nint main(void) {\n    double peso, altura, imc;\n\n    printf(\"Digite o peso em kg (ex: 70.5): \");\n    if (scanf(\"%lf\", &peso) != 1) return 1;\n\n    printf(\"Digite a altura em metros (ex: 1.75): \");\n    if (scanf(\"%lf\", &altura) != 1 || altura <= 0.0) return 1;\n\n    imc = peso / (altura * altura);\n    printf(\"IMC calculado: %.2f\\n\", imc);\n    printf(\"Condicao: \");\n\n    if (imc < 18.5) {\n        printf(\"Abaixo do peso\\n\");\n    } else if (imc < 25.0) {\n        printf(\"Peso ideal\\n\");\n    } else if (imc < 30.0) {\n        printf(\"Sobrepeso\\n\");\n    } else if (imc < 35.0) {\n        printf(\"Obesidade grau I\\n\");\n    } else if (imc < 40.0) {\n        printf(\"Obesidade grau II\\n\");\n    } else {\n        printf(\"Obesidade grau III\\n\");\n    }\n\n    return 0;\n}"
+  },
+  {
+    "id": "res-301",
+    "exerciseId": "ex-3-1",
+    "author": "Guilherme Rocha",
+    "comment": "Comparação hierárquica de ano, depois mês, depois dia para encontrar a data mais recente.",
+    "createdAt": "22/03/2026 14:05",
+    "linesCount": 42,
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int d1, m1, a1;\n    int d2, m2, a2;\n\n    printf(\"Digite a primeira data (dia mes ano): \");\n    if (scanf(\"%d %d %d\", &d1, &m1, &a1) != 3) return 1;\n\n    printf(\"Digite a segunda data (dia mes ano): \");\n    if (scanf(\"%d %d %d\", &d2, &m2, &a2) != 3) return 1;\n\n    if (a1 > a2) {\n        printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n    } else if (a2 > a1) {\n        printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n    } else {\n        if (m1 > m2) {\n            printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n        } else if (m2 > m1) {\n            printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n        } else {\n            if (d1 > d2) {\n                printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n            } else if (d2 > d1) {\n                printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n            } else {\n                printf(\"As duas datas sao exatamente iguais: %02d/%02d/%04d\\n\", d1, m1, a1);\n            }\n        }\n    }\n\n    return 0;\n}"
+  },
+  {
+    "id": "res-401",
+    "exerciseId": "ex-4-1",
+    "author": "Patricia Mendes",
+    "comment": "Laço simples incrementando passo a passo ou por múltiplos diretos de Y.",
+    "createdAt": "26/03/2026 11:30",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int n, y, m;\n\n    printf(\"Digite o valor de N (limite superior): \");\n    if (scanf(\"%d\", &n) != 1 || n <= 0) return 1;\n\n    printf(\"Digite o valor de Y: \");\n    if (scanf(\"%d\", &y) != 1 || y <= 0) return 1;\n\n    printf(\"Multiplos de %d inferiores a %d:\\n\", y, n);\n    for (m = y; m < n; m += y) {\n        printf(\"%d \", m);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}"
+  },
+  {
+    "id": "res-501",
+    "exerciseId": "ex-5-9",
+    "author": "Professor / Monitor FAC",
+    "comment": "Varredura a partir de 1001 contabilizando números cujo resto por 11 seja 5 até atingir o quinto.",
+    "createdAt": "01/04/2026 17:00",
+    "linesCount": 25,
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int num = 1001;\n    int contagem = 0;\n    int resultado = -1;\n\n    while (contagem < 5) {\n        if (num % 11 == 5) {\n            contagem++;\n            if (contagem == 5) {\n                resultado = num;\n                break;\n            }\n        }\n        num++;\n    }\n\n    printf(\"O quinto numero maior que 1000 cuja divisao por 11 tem resto 5 eh: %d\\n\", resultado);\n    return 0;\n}"
+  }
+]
