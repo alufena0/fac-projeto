@@ -1,96 +1,68 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-interface HeaderProps {
-  currentView: string;
-  onNavigate: (view: string) => void;
-  fontFamily: 'serif' | 'sans';
-  onToggleFont: () => void;
-  totalResolutions: number;
-}
+export const Header: React.FC = () => {
+  const location = useLocation();
+  const path = location.pathname;
 
-export const Header: React.FC<HeaderProps> = ({
-  currentView,
-  onNavigate,
-  fontFamily,
-  onToggleFont,
-  totalResolutions
-}) => {
+  const isActive = (target: string) => {
+    if (target === '/') return path === '/';
+    return path.startsWith(target);
+  };
+
+  const linkClass = (target: string) =>
+    `bg-transparent border-0 cursor-pointer p-0 text-sm no-underline ${
+      isActive(target)
+        ? 'font-bold text-[#002244] underline'
+        : 'classic-link text-[#0000cc]'
+    }`;
+
   return (
-    <header id="site-header" className="bg-[#003366] border border-[#002244] mb-4">
-      {/* Faixa superior de identificação acadêmica */}
-      <div className="bg-[#002244] border-b border-[#001933] px-4 py-1.5 text-xs text-[#e2effd] flex justify-between items-center">
-        <div>
-          <span className="font-bold text-[#ffffcc] tracking-wide">FAC &mdash; Fundamentos de Algoritmos de Computação</span>
-        </div>
-        <div className="flex items-center space-x-3 text-xs">
-          <span>Tipografia: <strong>Inter / Segoe UI</strong></span>
-          <span>&bull;</span>
-          <span>Resoluções Arquivadas: <strong className="text-[#ffffcc]">{totalResolutions}</strong></span>
-        </div>
-      </div>
-
+    <header
+      id="site-header"
+      className="bg-[#003366] border border-[#002244] mb-4"
+    >
       {/* Título Principal Institucional */}
       <div className="px-6 py-4 bg-[#003366]">
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight m-0 text-[#ffffff]">
-          FAC &mdash; Banco de Resoluções da Turma
-        </h1>
         <p className="text-sm text-[#e2effd] mt-1 mb-0">
-          Disciplina: <strong className="text-[#ffffcc]">Fundamentos de Algoritmos de Computação (1FAC)</strong> &bull; Prof. Leonardo Vianna
+          Disciplina:{' '}
+          <strong className="text-[#ffffcc]">
+            Fundamentos de Algoritmos de Computação (1FAC)
+          </strong>{' '}
+          &bull; Prof. Leonardo Vianna
         </p>
       </div>
 
       {/* Menu Horizontal de Links de Texto Tradicionais (sem ícones) */}
-      <nav id="main-navigation" className="bg-[#b8daff] border-t-2 border-b border-[#002244] px-4 py-1.5">
+      <nav
+        id="main-navigation"
+        className="bg-[#b8daff] border-t-2 border-b border-[#002244] px-4 py-1.5"
+      >
         <ul className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm list-none m-0 p-0">
           <li>
-            <button
-              onClick={() => onNavigate('home')}
-              className={`bg-transparent border-0 cursor-pointer p-0 text-sm ${
-                currentView === 'home' ? 'font-bold text-[#002244] underline' : 'classic-link text-[#0000cc]'
-              }`}
-            >
+            <Link to="/" className={linkClass('/')}>
               [ Início ]
-            </button>
+            </Link>
           </li>
           <li>
-            <button
-              onClick={() => onNavigate('listas')}
-              className={`bg-transparent border-0 cursor-pointer p-0 text-sm ${
-                currentView === 'listas' ? 'font-bold text-[#002244] underline' : 'classic-link text-[#0000cc]'
-              }`}
-            >
+            <Link to="/listas" className={linkClass('/listas')}>
               [ Listas de Exercícios (I &ndash; V) ]
-            </button>
+            </Link>
           </li>
           <li>
-            <button
-              onClick={() => onNavigate('enviar')}
-              className={`bg-transparent border-0 cursor-pointer p-0 text-sm ${
-                currentView === 'enviar' ? 'font-bold text-[#002244] underline' : 'classic-link text-[#0000cc]'
-              }`}
-            >
-              [ Submeter Resolução ]
-            </button>
+            <Link to="/enviar" className={linkClass('/enviar')}>
+              [ Enviar Resolução ]
+            </Link>
           </li>
           <li>
-            <button
-              onClick={() => onNavigate('normas')}
-              className={`bg-transparent border-0 cursor-pointer p-0 text-sm ${
-                currentView === 'normas' ? 'font-bold text-[#002244] underline' : 'classic-link text-[#0000cc]'
-              }`}
-            >
+            <Link to="/normas" className={linkClass('/normas')}>
               [ Normas &amp; Moderação ]
-            </button>
+            </Link>
           </li>
           <li>
-            <button
-              onClick={() => onNavigate('dicas-c')}
-              className={`bg-transparent border-0 cursor-pointer p-0 text-sm ${
-                currentView === 'dicas-c' ? 'font-bold text-[#002244] underline' : 'classic-link text-[#0000cc]'
-              }`}
-            >
+            <Link to="/dicas-c" className={linkClass('/dicas-c')}>
               [ Guia do Compilador GCC ]
-            </button>
+            </Link>
           </li>
         </ul>
       </nav>

@@ -12,11 +12,13 @@ export const ExerciseListTable: React.FC<ExerciseListTableProps> = ({
   lists,
   resolutions,
   onSelectExercise,
-  onOpenSubmitForExercise
+  onOpenSubmitForExercise,
 }) => {
   const [activeListId, setActiveListId] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [expandedExerciseId, setExpandedExerciseId] = useState<string | null>(null);
+  const [expandedExerciseId, setExpandedExerciseId] = useState<string | null>(
+    null,
+  );
 
   const getResolutionCount = (exerciseId: string) => {
     return resolutions.filter((r) => r.exerciseId === exerciseId).length;
@@ -113,11 +115,17 @@ export const ExerciseListTable: React.FC<ExerciseListTableProps> = ({
             <table className="table-classic">
               <thead>
                 <tr>
-                  <th style={{ width: '45px' }} className="text-center">Nº</th>
+                  <th style={{ width: '45px' }} className="text-center">
+                    Nº
+                  </th>
                   <th style={{ width: '220px' }}>Título do Exercício</th>
                   <th>Enunciado Completo</th>
-                  <th style={{ width: '110px' }} className="text-center">Resoluções</th>
-                  <th style={{ width: '175px' }} className="text-center">Ações</th>
+                  <th style={{ width: '120px' }} className="text-center">
+                    Resoluções
+                  </th>
+                  <th style={{ width: '175px' }} className="text-center">
+                    Ações
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -148,7 +156,9 @@ export const ExerciseListTable: React.FC<ExerciseListTableProps> = ({
                               onClick={() => toggleExpand(ex.id)}
                               className="classic-link text-[11px] bg-transparent border-0 p-0"
                             >
-                              {isExpanded ? '[-] Ocultar especificações de I/O' : '[+] Ver especificações e exemplos'}
+                              {isExpanded
+                                ? '[-] Ocultar especificações de I/O'
+                                : '[+] Ver especificações e exemplos'}
                             </button>
                           </div>
                         </td>
@@ -164,20 +174,22 @@ export const ExerciseListTable: React.FC<ExerciseListTableProps> = ({
                           )}
                         </td>
                         <td className="text-center align-top">
-                          <div className="flex flex-col gap-1 items-center">
+                          <div className="flex flex-col gap-1 items-stretch">
                             <button
                               onClick={() => onSelectExercise(ex, list)}
-                              className="btn-classic text-xs w-full max-w-[155px]"
+                              className="btn-classic text-xs w-full whitespace-nowrap overflow-hidden text-ellipsis"
+                              style={{ minHeight: '26px' }}
                               title="Acessa a página da questão com todas as resoluções enviadas"
                             >
-                              [ Ver Resoluções ({count}) ]
+                              Ver Resoluções ({count})
                             </button>
                             <button
                               onClick={() => onOpenSubmitForExercise(ex.id)}
-                              className="btn-classic text-xs w-full max-w-[155px] font-bold"
+                              className="btn-classic text-xs w-full font-bold whitespace-nowrap overflow-hidden text-ellipsis"
+                              style={{ minHeight: '26px' }}
                               title="Enviar uma resolução em C para esta questão"
                             >
-                              [ + Enviar Solução ]
+                              + Enviar Solução
                             </button>
                           </div>
                         </td>
@@ -186,7 +198,10 @@ export const ExerciseListTable: React.FC<ExerciseListTableProps> = ({
                       {/* Linha expansível com detalhes rápidos do problema */}
                       {isExpanded && (
                         <tr className="bg-[#f9fbfd]">
-                          <td colSpan={5} className="p-3 border-t-0 border-b border-[#003366]">
+                          <td
+                            colSpan={5}
+                            className="p-3 border-t-0 border-b border-[#003366]"
+                          >
                             <div className="border border-[#4a709c] bg-[#ffffff] p-3 text-xs">
                               <div className="font-bold text-[#003366] mb-1">
                                 Detalhes Rápidos &mdash; {ex.title}:
@@ -209,13 +224,17 @@ export const ExerciseListTable: React.FC<ExerciseListTableProps> = ({
                                 <div className="flex flex-wrap gap-4 font-mono text-[11px] bg-[#f4f4f4] p-2 border border-[#d0d0d0]">
                                   {ex.sampleInput && (
                                     <div>
-                                      <span className="font-sans font-bold">Entrada Exemplo:</span>{' '}
+                                      <span className="font-sans font-bold">
+                                        Entrada Exemplo:
+                                      </span>{' '}
                                       {ex.sampleInput.replace(/\n/g, ' ')}
                                     </div>
                                   )}
                                   {ex.sampleOutput && (
                                     <div>
-                                      <span className="font-sans font-bold">Saída Exemplo:</span>{' '}
+                                      <span className="font-sans font-bold">
+                                        Saída Exemplo:
+                                      </span>{' '}
                                       {ex.sampleOutput.replace(/\n/g, ' ')}
                                     </div>
                                   )}

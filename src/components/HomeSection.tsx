@@ -12,7 +12,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
   lists,
   resolutions,
   onNavigate,
-  onSelectExerciseById
+  onSelectExerciseById,
 }) => {
   const totalExercises = lists.reduce((acc, l) => acc + l.exercises.length, 0);
   const totalSubmissions = resolutions.length;
@@ -22,18 +22,18 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
     <div className="space-y-4">
       {/* Quadro de Boas-Vindas Institucional */}
       <div className="box-classic">
-        <div className="box-classic-header">
-          Aviso &bull; Disciplina: Fundamentos de Algoritmos de Computação (1FAC) &bull; Prof. Leonardo Vianna
-        </div>
+        <div className="box-classic-header">Aviso</div>
         <p className="m-0 mb-2 leading-relaxed text-sm text-[#111111]">
-          Bem-vindo(a) ao <strong>Banco de Resoluções da Turma</strong>. Este repositório foi desenvolvido
-          pela turma com o objetivo de centralizar soluções comentadas dos exercícios práticos
-          em linguagem <strong>C</strong>. O objetivo é propiciar a comparação de abordagens
-          algorítmicas, análise de código e auxílio mútuo na preparação para as provas.
+          Bem-vindo(a) ao <strong>Banco de Resoluções da Turma</strong>. Este
+          repositório foi desenvolvido pela turma com o objetivo de centralizar
+          soluções comentadas dos exercícios práticos em linguagem{' '}
+          <strong>C</strong>. O objetivo é propiciar a comparação de abordagens
+          algorítmicas, análise de código e auxílio mútuo na preparação para as
+          provas.
         </p>
         <p className="m-0 text-xs text-[#555555]">
-          Atenção: A consulta a este banco visa o aprendizado e o esclarecimento de dúvidas. Incentive-se a tentar
-          resolver as questões de maneira autônoma antes de consultar o código dos colegas.
+          Este banco existe para consulta e comparação de abordagens entre os
+          exercícios.
         </p>
       </div>
 
@@ -43,9 +43,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
           <div className="text-xs font-bold text-[#003366] uppercase border-b border-[#b8daff] pb-1 mb-2">
             Listas de Exercícios
           </div>
-          <div className="text-2xl font-bold text-[#003366]">
-            5 Listas
-          </div>
+          <div className="text-2xl font-bold text-[#003366]">5 Listas</div>
           <div className="text-xs text-[#555555] mt-1">
             Total de {totalExercises} exercícios catalogados
           </div>
@@ -67,9 +65,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
           <div className="text-xs font-bold text-[#003366] uppercase border-b border-[#b8daff] pb-1 mb-2">
             Ambiente de Execução
           </div>
-          <div className="text-base font-bold text-[#003366]">
-            GCC / Linux
-          </div>
+          <div className="text-base font-bold text-[#003366]">GCC / Linux</div>
           <div className="text-xs text-[#555555] mt-1">
             Compilação C (-Wall -pedantic)
           </div>
@@ -86,15 +82,23 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
             <tr>
               <th style={{ width: '80px' }}>Lista</th>
               <th>Título / Descrição da Lista</th>
-              <th style={{ width: '90px' }} className="text-center">Questões</th>
-              <th style={{ width: '100px' }} className="text-center">Resoluções</th>
-              <th style={{ width: '130px' }} className="text-center">Acesso</th>
+              <th style={{ width: '90px' }} className="text-center">
+                Questões
+              </th>
+              <th style={{ width: '100px' }} className="text-center">
+                Resoluções
+              </th>
+              <th style={{ width: '130px' }} className="text-center">
+                Acesso
+              </th>
             </tr>
           </thead>
           <tbody>
             {lists.map((list) => {
               const listResolutionsCount = list.exercises.reduce((acc, ex) => {
-                return acc + resolutions.filter((r) => r.exerciseId === ex.id).length;
+                return (
+                  acc + resolutions.filter((r) => r.exerciseId === ex.id).length
+                );
               }, 0);
 
               return (
@@ -104,7 +108,9 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
                   </td>
                   <td>
                     <strong className="text-[#002244]">{list.title}</strong>
-                    <div className="text-xs text-[#555555]">{list.description}</div>
+                    <div className="text-xs text-[#555555]">
+                      {list.description}
+                    </div>
                   </td>
                   <td className="text-center">{list.exercises.length}</td>
                   <td className="text-center font-bold text-[#0000cc]">
@@ -148,8 +154,12 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
                 <th style={{ width: '130px' }}>Data / Hora</th>
                 <th>Exercício Relacionado</th>
                 <th style={{ width: '180px' }}>Autor</th>
-                <th style={{ width: '90px' }} className="text-center">Extensão</th>
-                <th style={{ width: '110px' }} className="text-center">Ação</th>
+                <th style={{ width: '90px' }} className="text-center">
+                  Extensão
+                </th>
+                <th style={{ width: '110px' }} className="text-center">
+                  Ação
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -162,7 +172,9 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
                   <tr key={res.id}>
                     <td className="text-[#555555]">{res.createdAt}</td>
                     <td>
-                      <strong>{exercise ? exercise.title : res.exerciseId}</strong>
+                      <strong>
+                        {exercise ? exercise.title : res.exerciseId}
+                      </strong>
                       {res.comment && (
                         <div className="text-[11px] text-[#666666] italic">
                           &ldquo;{res.comment}&rdquo;

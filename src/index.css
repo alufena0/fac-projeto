@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Estilos de interface anos 90/2000 institucional e convidativa (GeoCities / Web Clássica) */
 :root {
-  --font-main: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-mono: "Courier New", Courier, Lucida Console, monospace;
+  --font-main: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Courier New', Courier, Lucida Console, monospace;
 }
 
 body {
@@ -17,19 +17,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #003366;
   font-family: var(--font-main);
 }
 
 /* Links clássicos da web antiga com azul tradicional sublinhado */
-a.classic-link, .classic-link {
+a.classic-link,
+.classic-link {
   color: #0000cc;
   text-decoration: underline;
   cursor: pointer;
 }
 
-a.classic-link:hover, .classic-link:hover {
+a.classic-link:hover,
+.classic-link:hover {
   color: #000088;
 }
 
@@ -177,13 +184,31 @@ a.classic-link:visited {
   white-space: pre;
 }
 
-.c-kw { color: #000099; font-weight: bold; }
-.c-fn { color: #005072; font-weight: bold; }
-.c-str { color: #9c1313; }
-.c-num { color: #0000ee; }
-.c-com { color: #166e22; font-style: italic; }
-.c-prep { color: #6b1464; font-weight: bold; }
-.c-plain { color: #111111; }
+.c-kw {
+  color: #000099;
+  font-weight: bold;
+}
+.c-fn {
+  color: #005072;
+  font-weight: bold;
+}
+.c-str {
+  color: #9c1313;
+}
+.c-num {
+  color: #0000ee;
+}
+.c-com {
+  color: #166e22;
+  font-style: italic;
+}
+.c-prep {
+  color: #6b1464;
+  font-weight: bold;
+}
+.c-plain {
+  color: #111111;
+}
 
 /* Barra de Linha de Código */
 .line-num {
@@ -195,4 +220,19 @@ a.classic-link:visited {
   margin-right: 8px;
   border-right: 1px solid #d0d0d0;
   user-select: none;
+}
+
+html[data-theme='dark'] {
+  filter: invert(1) hue-rotate(180deg);
+}
+html[data-theme='dark'] img,
+html[data-theme='dark'] svg,
+html[data-theme='dark'] video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html[data-theme='dark'] [data-theme-exempt],
+html[data-theme='dark'] [data-theme-exempt] svg,
+html[data-theme='dark'] [data-theme-exempt] * {
+  filter: none !important;
 }

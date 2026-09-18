@@ -33,7 +33,7 @@
     "comment": "Comparação hierárquica de ano, depois mês, depois dia para encontrar a data mais recente.",
     "createdAt": "22/03/2026 14:05",
     "linesCount": 42,
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int d1, m1, a1;\n    int d2, m2, a2;\n\n    printf(\"Digite a primeira data (dia mes ano): \");\n    if (scanf(\"%d %d %d\", &d1, &m1, &a1) != 3) return 1;\n\n    printf(\"Digite a segunda data (dia mes ano): \");\n    if (scanf(\"%d %d %d\", &d2, &m2, &a2) != 3) return 1;\n\n    if (a1 > a2) {\n        printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n    } else if (a2 > a1) {\n        printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n    } else {\n        if (m1 > m2) {\n            printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n        } else if (m2 > m1) {\n            printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n        } else {\n            if (d1 > d2) {\n                printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n            } else if (d2 > d1) {\n                printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n            } else {\n                printf(\"As duas datas sao exatamente iguais: %02d/%02d/%04d\\n\", d1, m1, a1);\n            }\n        }\n    }\n\n    return 0;\n}"
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int d1, m1, a1;\n    int d2, m2, a2;\n\n    printf(\"Digite a primeira data (dia mes ano): \");\n    if (scanf(\"%d %d %d\", &d1, &m1, &a1) != 3) return 1;\n\n    printf(\"Digite a segunda data (dia mes ano): \");\n    if (scanf(\"%d %d %d\", &d2, &m2, &a2) != 3) return 1;\n\n    if (a1 > a2) {\n        printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n    } else if (a2 > a1) {\n        printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n    } else {\n        /* Mesmo ano: compara meses */\n        if (m1 > m2) {\n            printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n        } else if (m2 > m1) {\n            printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n        } else {\n            /* Mesmo mes: compara dias */\n            if (d1 > d2) {\n                printf(\"Data mais recente: %02d/%02d/%04d\\n\", d1, m1, a1);\n            } else if (d2 > d1) {\n                printf(\"Data mais recente: %02d/%02d/%04d\\n\", d2, m2, a2);\n            } else {\n                printf(\"As duas datas sao exatamente iguais: %02d/%02d/%04d\\n\", d1, m1, a1);\n            }\n        }\n    }\n\n    return 0;\n}"
   },
   {
     "id": "res-401",
@@ -52,5 +52,437 @@
     "createdAt": "01/04/2026 17:00",
     "linesCount": 25,
     "code": "#include <stdio.h>\n\nint main(void) {\n    int num = 1001;\n    int contagem = 0;\n    int resultado = -1;\n\n    while (contagem < 5) {\n        if (num % 11 == 5) {\n            contagem++;\n            if (contagem == 5) {\n                resultado = num;\n                break;\n            }\n        }\n        num++;\n    }\n\n    printf(\"O quinto numero maior que 1000 cuja divisao por 11 tem resto 5 eh: %d\\n\", resultado);\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-1-1",
+    "exerciseId": "ex-1-1",
+    "author": "Anderson",
+    "comment": "Cálculo direto somando os percentuais de distribuidor e impostos ao custo de fábrica.",
+    "createdAt": "13/08/2026 20:00",
+    "linesCount": 15,
+    "code": "#include <stdio.h>\nint main()\n{\n    int custo1, distribuidor, impostos, custo2;\n    printf(\"Digite o custo de fabrica do carro \");\n    scanf(\"%d\", &custo1);\n    printf(\"Digite a porcentagem do distribuidor \");\n    scanf(\"%d\", &distribuidor);\n    printf(\"Digite a porcentagem de impostos \");\n    scanf(\"%d\", &impostos);\n    custo2 = ((custo1 * distribuidor / 100) + (custo1 * impostos / 100)) + custo1;\n    printf(\"O custo de consumidor e %d\", custo2);\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-1-1b",
+    "exerciseId": "ex-1-1",
+    "author": "Estudante Anônimo",
+    "comment": "Aplica os dois percentuais como diferenças multiplicativas antes de somar ao custo original.",
+    "createdAt": "20/08/2026 10:00",
+    "linesCount": 9,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    float custo;\n    printf(\"custo\\n\");\n    scanf(\"%f\", &custo);\n    custo = ((custo * 1.1) - custo) + ((custo * 1.2) - custo) + custo;\n    printf(\"novo custo %.f \\n\", custo);\n}"
+  },
+  {
+    "id": "res-anderson-1-2",
+    "exerciseId": "ex-1-2",
+    "author": "Anderson",
+    "comment": "Classificação simples com unsigned int para bloquear idades negativas.",
+    "createdAt": "13/08/2026 20:05",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\nint main()\n{\n    unsigned int idade;\n    printf(\"Digite uma idade \");\n    scanf(\"%u\", &idade);\n    if (idade <= 4)\n    {\n        printf(\"infantil A\");\n    }\n    else if (idade <= 7)\n    {\n        printf(\"infantil B\");\n    }\n    else if (idade <= 10)\n    {\n        printf(\"infantil C\");\n    }\n    else if (idade <= 13)\n    {\n        printf(\"juvenil A\");\n    }\n    else if (idade <= 17)\n    {\n        printf(\"juvenil B\");\n    }\n    else\n    {\n        printf(\"Adulto\");\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-1-2b",
+    "exerciseId": "ex-1-2",
+    "author": "Estudante Anônimo",
+    "comment": "Repete a classificação para uma quantidade de nadadores informada pelo usuário, usando um laço for.",
+    "createdAt": "13/08/2026 20:10",
+    "linesCount": 30,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int idade, i, nadadores;\n    printf(\"informe a quantidade de nadadores\\n\");\n    scanf(\"%d\", &nadadores);\n\n    for (i = 0; i < nadadores; i++)\n    {\n        printf(\"qual a sua idade\\n\");\n        scanf(\"%d\", &idade);\n\n        if (idade <= 4)\n        {\n            printf(\"infantil a\\n\");\n        }\n        else if (idade <= 7)\n        {\n            printf(\"infantil b\\n\");\n        }\n        else if (idade <= 10)\n        {\n            printf(\"infantil c\\n\");\n        }\n        else if (idade <= 13)\n        {\n            printf(\"juvenil a\\n\");\n        }\n        else if (idade <= 17)\n        {\n            printf(\"juvenil b\\n\");\n        }\n        else if (idade >= 18)\n        {\n            printf(\"adulto\\n\");\n        }\n        else\n        {\n            printf(\"resposta invalida\");\n        }\n    }\n}"
+  },
+  {
+    "id": "res-anderson-1-3",
+    "exerciseId": "ex-1-3",
+    "author": "Anderson",
+    "comment": "Leitura do gênero por código numérico (1 ou 2) e aplicação da fórmula correspondente.",
+    "createdAt": "13/08/2026 20:15",
+    "linesCount": 15,
+    "code": "#include <stdio.h>\nint main()\n{\n    int genero;\n    float peso, altura;\n    printf(\"Digite 1 para homem e 2 para mulher\");\n    scanf(\"%d\", &genero);\n    printf(\"Digite a sua altura\");\n    scanf(\"%f\", &altura);\n    if (genero == 1)\n    {\n        peso = (72.7 * altura) - 58;\n        printf(\"Seu peso ideal e %f\", peso);\n    }\n    else\n    {\n        peso = (62.1 * altura) - 44.7;\n        printf(\"Seu peso ideal e %f\", peso);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-1-4",
+    "exerciseId": "ex-1-4",
+    "author": "Anderson",
+    "comment": "Verificação em cadeia das faixas de saldo, calculando o percentual de crédito correspondente.",
+    "createdAt": "13/08/2026 20:20",
+    "linesCount": 20,
+    "code": "#include <stdio.h>\nint main()\n{\n    float saldo, credito;\n    printf(\"Digite o seu saldo \");\n    scanf(\"%f\", &saldo);\n    if (saldo < 1000)\n    {\n        printf(\"nenhum credito\");\n    }\n    else if (saldo <= 1499.99)\n    {\n        credito = saldo * 0.2;\n        printf(\"20%% do saldo medio %f\", credito);\n    }\n    else if (saldo <= 2499.99)\n    {\n        credito = saldo * 0.3;\n        printf(\"30%% do saldo medio %f\", credito);\n    }\n    else\n    {\n        credito = saldo * 0.4;\n        printf(\"40%% do saldo medio %f\", credito);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-1-5",
+    "exerciseId": "ex-1-5",
+    "author": "Anderson",
+    "comment": "Usa divisão e resto sucessivos para cada valor de nota/moeda, imprimindo a contagem de cada uma.",
+    "createdAt": "13/08/2026 20:25",
+    "linesCount": 36,
+    "code": "#include <stdio.h>\nint main()\n{\n    int dinheiro, cem, cinquenta, vinte, dez, cinco, dois, um;\n    printf(\"Digite uma quantia \");\n    scanf(\"%d\", &dinheiro);\n    if (dinheiro >= 100)\n    {\n        cem = dinheiro / 100;\n        dinheiro %= 100;\n        printf(\"Notas de cem: %d\\n\", cem);\n    }\n    if (dinheiro >= 50)\n    {\n        cinquenta = dinheiro / 50;\n        dinheiro %= 50;\n        printf(\"Notas de cinquenta: %d\\n\", cinquenta);\n    }\n    if (dinheiro >= 20)\n    {\n        vinte = dinheiro / 20;\n        dinheiro %= 20;\n        printf(\"Notas de vinte: %d\\n\", vinte);\n    }\n    if (dinheiro >= 10)\n    {\n        dez = dinheiro / 10;\n        dinheiro %= 10;\n        printf(\"Notas de dez: %d\\n\", dez);\n    }\n    if (dinheiro >= 5)\n    {\n        cinco = dinheiro / 5;\n        dinheiro %= 5;\n        printf(\"Notas de cinco: %d\\n\", cinco);\n    }\n    if (dinheiro >= 2)\n    {\n        dois = dinheiro / 2;\n        dinheiro %= 2;\n        printf(\"Notas de dois: %d\\n\", dois);\n    }\n    if (dinheiro == 1)\n    {\n        um = dinheiro / 1;\n        dinheiro %= 1;\n        printf(\"Notas de um: %d\\n\", um);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-1-6",
+    "exerciseId": "ex-1-6",
+    "author": "Anderson",
+    "comment": "Verifica o mês e soma os dias acumulados dos meses anteriores para achar a ordem no ano.",
+    "createdAt": "13/08/2026 20:30",
+    "linesCount": 60,
+    "code": "#include <stdio.h>\nint main()\n{\n    int dia, mes, ordem;\n    printf(\"Digite o digito de um dia \\n\");\n    scanf(\"%d\", &dia);\n    printf(\"Digite o digito de um mes \\n\");\n    scanf(\"%d\", &mes);\n    if (dia <= 31 && mes == 1) { ordem = dia; printf(\"%d\", ordem); }\n    if (dia <= 59 && mes == 2) { ordem = dia + 31; printf(\"%d\", ordem); }\n    if (dia <= 90 && mes == 3) { ordem = dia + 59; printf(\"%d\", ordem); }\n    if (dia <= 120 && mes == 4) { ordem = dia + 90; printf(\"%d\", ordem); }\n    if (dia <= 151 && mes == 5) { ordem = dia + 120; printf(\"%d\", ordem); }\n    if (dia <= 181 && mes == 6) { ordem = dia + 151; printf(\"%d\", ordem); }\n    if (dia <= 212 && mes == 7) { ordem = dia + 181; printf(\"%d\", ordem); }\n    if (dia <= 243 && mes == 8) { ordem = dia + 212; printf(\"%d\", ordem); }\n    if (dia <= 273 && mes == 9) { ordem = dia + 243; printf(\"%d\", ordem); }\n    if (dia <= 304 && mes == 10) { ordem = dia + 273; printf(\"%d\", ordem); }\n    if (dia <= 334 && mes == 11) { ordem = dia + 304; printf(\"%d\", ordem); }\n    if (dia <= 334 && mes == 12) { ordem = dia + 334; printf(\"%d\", ordem); }\n}"
+  },
+  {
+    "id": "res-anderson-1-7",
+    "exerciseId": "ex-1-7",
+    "author": "Anderson",
+    "comment": "Verifica se as horas excedem 40 e aplica o adicional de 50% apenas sobre as horas extras.",
+    "createdAt": "13/08/2026 20:35",
+    "linesCount": 18,
+    "code": "#include <stdio.h>\nint main()\n{\n    int salario, horas, total;\n    printf(\"Digite o salario por hora \\n\");\n    scanf(\"%d\", &salario);\n    printf(\"Digite as horas trabalhadas \\n\");\n    scanf(\"%d\", &horas);\n    if (horas <= 40)\n    {\n        total = salario * horas;\n        printf(\"%d\", total);\n    }\n    else\n    {\n        total = (salario * 1.5) * (horas - 40) + (salario * 40);\n        printf(\"%d\", total);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-1-8",
+    "exerciseId": "ex-1-8",
+    "author": "Anderson",
+    "comment": "Usa código numérico para o tipo de apartamento e calcula subtotal, taxa e total por ramos separados.",
+    "createdAt": "13/08/2026 20:40",
+    "linesCount": 45,
+    "code": "#include <stdio.h>\nint main()\n{\n    char nome[50];\n    int tipo, diarias, consumo, total, taxa, subtotal, valorDiarias;\n    printf(\"Digite seu nome \\n\");\n    scanf(\"%s\", nome);\n    printf(\"Escolha:\\n 1 para tipo A de apartamento\\n2 para tipo B\\n3 para tipo C\\n4 para tipo D \\n\");\n    scanf(\"%d\", &tipo);\n    printf(\"Digite a quantidade de diarias \\n\");\n    scanf(\"%d\", &diarias);\n    printf(\"Digite o valor de consumo interno \\n\");\n    scanf(\"%d\", &consumo);\n    if (tipo == 1)\n    {\n        total = ((350 * diarias) + consumo) * 1.1;\n        valorDiarias = 350 * diarias;\n        subtotal = (350 * diarias) + consumo;\n        taxa = total - subtotal;\n        printf(\"%s, %d, %d, %d, %d, %d, %d\\n\", nome, tipo, total, valorDiarias, consumo, subtotal, taxa);\n    }\n    if (tipo == 2)\n    {\n        total = ((275 * diarias) + consumo) * 1.1;\n        valorDiarias = 275 * diarias;\n        subtotal = (275 * diarias) + consumo;\n        taxa = total - subtotal;\n        printf(\"%s, %d, %d, %d, %d, %d, %d\\n\", nome, tipo, total, valorDiarias, consumo, subtotal, taxa);\n    }\n    if (tipo == 3)\n    {\n        total = ((200 * diarias) + consumo) * 1.1;\n        valorDiarias = 200 * diarias;\n        subtotal = (200 * diarias) + consumo;\n        taxa = total - subtotal;\n        printf(\"%s, %d, %d, %d, %d, %d, %d\\n\", nome, tipo, total, valorDiarias, consumo, subtotal, taxa);\n    }\n    if (tipo == 4)\n    {\n        total = ((150 * diarias) + consumo) * 1.1;\n        valorDiarias = 150 * diarias;\n        subtotal = (150 * diarias) + consumo;\n        taxa = total - subtotal;\n        printf(\"%s, %d, %d, %d, %d, %d, %d\", nome, tipo, total, valorDiarias, consumo, subtotal, taxa);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-2-1a",
+    "exerciseId": "ex-2-1",
+    "author": "Estudante Anônimo",
+    "comment": "Usa blocos if/else aninhados em cascata em vez de else if, com comentários explicando cada etapa.",
+    "createdAt": "03/09/2026 09:00",
+    "linesCount": 35,
+    "code": "#include <stdio.h>\nint main()\n{\n    float imc, p, h;\n    printf (\"qual seu peso? \");\n    scanf (\"%f\",&p);\n    printf (\"qual sua altura? \");\n    scanf (\"%f\", &h);\n    imc = p/(h*h);\n    printf (\"IMC: %.2f\\n\", imc);\n    if (imc<18.5)\n    {\n        printf (\"abaixo do peso\");\n    }\n    else\n    {\n        if (imc<25)\n        {\n            printf (\"peso ideal\");\n        }\n        else\n        {\n            if (imc<30)\n            {\n                printf (\"sobrepeso\");\n            }\n            else\n            {\n                if (imc<35)\n                {\n                    printf (\"obesidade grau I\");\n                }\n                else\n                {\n                    if (imc<40)\n                    {\n                        printf (\"obesidade grau II\");\n                    }\n                    else\n                    {\n                        printf (\"obesidade grau III\");\n                    }\n                }\n            }\n        }\n    }\n}"
+  },
+  {
+    "id": "res-anderson-2-1",
+    "exerciseId": "ex-2-1",
+    "author": "Anderson",
+    "comment": "Usa pow() da math.h para o quadrado da altura e else if em cadeia.",
+    "createdAt": "13/08/2026 20:50",
+    "linesCount": 25,
+    "code": "#include <stdio.h>\n#include <math.h>\nint main()\n{\n    int peso;\n    float altura, imc;\n    printf(\"Digite seu peso\\n\");\n    scanf(\"%d\", &peso);\n    printf(\"Digite sua altura\\n\");\n    scanf(\"%f\", &altura);\n    imc = peso / pow(altura, 2);\n    if (imc < 18.5)\n    {\n        printf(\"Abaixo do peso peso %f\", imc);\n    }\n    else if (imc < 25)\n    {\n        printf(\"Peso ideal %f\", imc);\n    }\n    else if (imc < 30)\n    {\n        printf(\"Sobrepeso %f\", imc);\n    }\n    else if (imc < 35)\n    {\n        printf(\"Obesidade grau I %f\", imc);\n    }\n    else if (imc < 40)\n    {\n        printf(\"Obesidade grau II %f\", imc);\n    }\n    else\n    {\n        printf(\"Obesidade grau III %f\", imc);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-2-2a",
+    "exerciseId": "ex-2-2",
+    "author": "Estudante Anônimo",
+    "comment": "Compara o número do planeta com if/else encadeado e imprime menu completo antes da leitura.",
+    "createdAt": "03/09/2026 09:10",
+    "linesCount": 30,
+    "code": "#include<stdio.h>\nint main(){\n    float peso, peso_planeta;\n    int nplan;\n    printf(\"Informe o seu peso(Kg): \");\n    scanf(\"%f\", &peso);\n    printf(\"Informe o número do planeta: \\n\");\n    printf(\"Mercurio [1] \\n\");\n    printf(\"Venus [2] \\n\");\n    printf(\"Marte [3] \\n\");\n    printf(\"Jupiter [4] \\n\");\n    printf(\"Saturno [5] \\n\");\n    printf(\"Urano [6] \\n\");\n    scanf(\"%d\", &nplan);\n    if (nplan == 1){\n        peso_planeta = (peso / 10) * 0.37;\n        printf(\"Seu peso em Mercurio eh: %.2f Kg\\n\", peso_planeta);\n    } else if (nplan == 2){\n        peso_planeta = (peso / 10) * 0.88;\n        printf(\"Seu peso em Venus eh: %.2f Kg\\n\", peso_planeta);\n    } else if (nplan == 3){\n        peso_planeta = (peso / 10) * 0.38;\n        printf(\"Seu peso em Marte eh: %.2f Kg\\n\", peso_planeta);\n    } else if (nplan == 4){\n        peso_planeta = (peso / 10) * 2.64;\n        printf(\"Seu peso em Jupiter eh: %.2f Kg\\n\", peso_planeta);\n    } else if (nplan == 5){\n        peso_planeta = (peso / 10) * 1.15;\n        printf(\"Seu peso em Saturno eh: %.2f Kg\\n\", peso_planeta);\n    } else {\n        peso_planeta = (peso / 10) * 1.17;\n        printf(\"Seu peso em Urano eh: %.2f Kg\\n\", peso_planeta);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-2-2b",
+    "exerciseId": "ex-2-2",
+    "author": "Estudante Anônimo",
+    "comment": "Mesma lógica, mas usando switch/case para escolher a gravidade do planeta em vez de if/else.",
+    "createdAt": "03/09/2026 09:15",
+    "linesCount": 36,
+    "code": "#include <stdio.h>\nint main()\n{\n    float pesoterra;\n    int numplaneta;\n    float pesoplaneta;\n    float gravidade;\n    printf(\"Informe seu peso \\n\");\n    scanf(\"%f\", &pesoterra);\n    printf(\"Escolha um planeta \\n\");\n    scanf(\"%d\", &numplaneta);\n    switch (numplaneta) {\n        case 1:\n            gravidade=0.37;\n            break;\n        case 2:\n            gravidade=0.88;\n            break;\n        case 3:\n            gravidade=0.38;\n            break;\n        case 4:\n            gravidade=2.64;\n            break;\n        case 5:\n            gravidade=1.15;\n            break;\n        case 6:\n            gravidade=1.17;\n            break;\n    }\n    pesoplaneta=(pesoterra/10)*gravidade;\n    printf(\"Seu peso é:\\n%.2f\", pesoplaneta);\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-2-2",
+    "exerciseId": "ex-2-2",
+    "author": "Anderson",
+    "comment": "Usa a mesma cadeia de else if, mas com o número do planeta ecoado junto ao resultado final.",
+    "createdAt": "13/08/2026 20:55",
+    "linesCount": 45,
+    "code": "#include <stdio.h>\nint main()\n{\n    int escolhaPlaneta;\n    float pesoTerra, planetaGravidade, pesoPlaneta;\n    printf(\"Digite seu peso \\n\");\n    scanf(\"%f\", &pesoTerra);\n    printf(\"Escolha o dígito para um planeta: 1 Mercúrio, 2 Vênus, 3 Marte, 4 Júpiter, 5 Saturno, 6 Urano \\n\");\n    scanf(\"%d\", &escolhaPlaneta);\n    if (escolhaPlaneta == 1)\n    {\n        planetaGravidade = 0.37;\n        pesoPlaneta = (pesoTerra / 10) * planetaGravidade;\n        printf(\"Planeta: %d\\n Peso no planeta escolhido: %f\\n\", escolhaPlaneta, pesoPlaneta);\n    }\n    else if (escolhaPlaneta == 2)\n    {\n        planetaGravidade = 0.88;\n        pesoPlaneta = (pesoTerra / 10) * planetaGravidade;\n        printf(\"Planeta: %d\\n Peso no planeta escolhido: %f\\n\", escolhaPlaneta, pesoPlaneta);\n    }\n    else if (escolhaPlaneta == 3)\n    {\n        planetaGravidade = 0.38;\n        pesoPlaneta = (pesoTerra / 10) * planetaGravidade;\n        printf(\"Planeta: %d\\n Peso no planeta escolhido: %f\\n\", escolhaPlaneta, pesoPlaneta);\n    }\n    else if (escolhaPlaneta == 4)\n    {\n        planetaGravidade = 2.64;\n        pesoPlaneta = (pesoTerra / 10) * planetaGravidade;\n        printf(\"Planeta: %d\\n Peso no planeta escolhido: %f\\n\", escolhaPlaneta, pesoPlaneta);\n    }\n    else if (escolhaPlaneta == 5)\n    {\n        planetaGravidade = 1.15;\n        pesoPlaneta = (pesoTerra / 10) * planetaGravidade;\n        printf(\"Planeta: %d\\n Peso no planeta escolhido: %f\\n\", escolhaPlaneta, pesoPlaneta);\n    }\n    else if (escolhaPlaneta == 6)\n    {\n        planetaGravidade = 1.17;\n        pesoPlaneta = (pesoTerra / 10) * planetaGravidade;\n        printf(\"Planeta: %d\\n Peso no planeta escolhido: %f\\n\", escolhaPlaneta, pesoPlaneta);\n    }\n    else\n    {\n        printf(\"Escolha inválida. Responda apenas com um valor entre 1 e 6\");\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-2-3a",
+    "exerciseId": "ex-2-3",
+    "author": "Estudante Anônimo",
+    "comment": "Lê o preço e imprime as três formas de pagamento de uma vez, sem pedir escolha do usuário.",
+    "createdAt": "03/09/2026 09:20",
+    "linesCount": 20,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    float precoproduto, valor10, valorpar5, valorpar10;\n    printf(\"\\tDigite o valor do produto: \");\n    scanf(\"%f\", &precoproduto);\n    valor10 = precoproduto - (precoproduto*0.10);\n    valorpar5 = precoproduto/5;\n    valorpar10 = (precoproduto*1.20)/10;\n    printf(\"\\n\\t\\tO valor do produto com 10 porcento de desconto é: %.2f\", valor10);\n    printf(\"\\n\\n\\t\\tO valor do produto parcelado em 5x é: %.2f\", valorpar5);\n    printf(\"\\n\\n\\t\\tO valor do produto parcelado em 10x com juros é: %.2f\", valorpar10);\n}"
+  },
+  {
+    "id": "res-anon-2-3b",
+    "exerciseId": "ex-2-3",
+    "author": "Estudante Anônimo",
+    "comment": "Pede ao usuário para escolher a forma de pagamento via caractere (A/B/C) antes de calcular.",
+    "createdAt": "03/09/2026 09:25",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\nint main ()\n{\n    float valor, parcelas;\n    char metpagamento;\n    printf (\"Insira o valor do produto: \");\n    scanf (\"%f\", &valor);\n    printf (\"Insira o metodo de pagamento:\\nA) Pagamento a vista\\nB) Parcelamento em 5x sem juros \\nC) Parcelamento em 10x, com juros de 20%%\\n\");\n    fflush (stdin);\n    scanf (\"%c\", &metpagamento);\n    if ((metpagamento=='A') || (metpagamento== 'a'))\n    {\n        valor=(valor-(valor*0.1));\n        printf (\"Seu produto tera 10%% de desconto! O valor final sera de: R$%.2f\",valor);\n    }\n    else if ((metpagamento=='B') || (metpagamento=='b'))\n    {\n        printf (\"O valor do seu produto ficara em: R$%.2f valor em 5 parcelas de R$%.2f\", valor, valor/5);\n    }\n    else\n    {\n        valor=(valor+(valor*0.2));\n        printf (\"O valor do seu produto ficara em: R$%.2f R$ em 10 parcelas de R$%.2f\", valor, valor/10);\n    }\n}"
+  },
+  {
+    "id": "res-anderson-2-3",
+    "exerciseId": "ex-2-3",
+    "author": "Anderson",
+    "comment": "Usa um número (1, 2 ou 3) para a escolha da forma de pagamento em vez de letra.",
+    "createdAt": "13/08/2026 21:00",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\nint main()\n{\n    float precoProduto, precoDesconto, precoParcela5x, precoParcela10x;\n    int escolhaPagamento;\n    printf(\"Digite o preço de um produto \\n\");\n    scanf(\"%f\", &precoProduto);\n    printf(\"Escolha o dígito do tipo de pagamento: 1 à vista com 10%% de desconto.\\n 2 parcelado em 5x sem juros.\\n 3 parcelado em 10x com juros \\n\");\n    scanf(\"%d\", &escolhaPagamento);\n    if (escolhaPagamento == 1)\n    {\n        precoDesconto = precoProduto * 0.9;\n        printf(\"O valor escolhido foi o com 10%% de desconto para pagamento à vista %f\", precoDesconto);\n    }\n    else if (escolhaPagamento == 2)\n    {\n        precoParcela5x = precoProduto / 5;\n        printf(\"O valor escolhido foi o com a prestação para parcelamento sem juros, em 5x %f\", precoParcela5x);\n    }\n    else if (escolhaPagamento == 3)\n    {\n        precoParcela10x = (precoProduto * 1.2) / 10;\n        printf(\"O valor escolhido foi o com a prestação para parcelamento com juros, em 10x %f\", precoParcela10x);\n    }\n    else\n    {\n        printf(\"Escolha inválida. Responda apenas com um valor entre 1 e 3\");\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-2-4a",
+    "exerciseId": "ex-2-4",
+    "author": "Estudante Anônimo",
+    "comment": "Lê percurso como inteiro e calcula consumo e custo total de forma direta.",
+    "createdAt": "03/09/2026 09:30",
+    "linesCount": 18,
+    "code": "#include <stdio.h>\nint main(){\n    int percurso;\n    float vl, consumo, total, kml;\n    printf(\"Informe o percurso:\\n\");\n    scanf(\"%i\", &percurso);\n    printf(\"informe o número de quilômetros que o carro percorre com um litro de combustível (km/l): \");\n    scanf(\"%f\", &kml);\n    printf(\"informe qual valor do litro:\");\n    scanf(\"%f\", &vl);\n    consumo = (percurso / kml);\n    total = (consumo * vl);\n    printf(\"o percurso consumiu: %.2f\\n\", consumo);\n    printf(\"o custo total do combustivel ficou em:  %.2f \", total);\n}"
+  },
+  {
+    "id": "res-anderson-2-4",
+    "exerciseId": "ex-2-4",
+    "author": "Anderson",
+    "comment": "Declara o percurso como float em vez de inteiro, evitando conversão implícita na divisão.",
+    "createdAt": "13/08/2026 21:05",
+    "linesCount": 18,
+    "code": "#include <stdio.h>\nint main()\n{\n    float percurso, kmPorLitro, precoLitro, consumo, custoTotal;\n    printf(\"Digite o km da viagem \\n\");\n    scanf(\"%f\", &percurso);\n    printf(\"Digite o consumo km/L do veículo \");\n    scanf(\"%f\", &kmPorLitro);\n    printf(\"Digite preço de 1 litro do combustível \\n\");\n    scanf(\"%f\", &precoLitro);\n    consumo = percurso / kmPorLitro;\n    custoTotal = consumo * precoLitro;\n    printf(\"A quantidade de combustível, em litros, consumida durante a viagem foi %f e o custo total de combustível foi %f \", consumo, custoTotal);\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-2-5a",
+    "exerciseId": "ex-2-5",
+    "author": "Estudante Anônimo",
+    "comment": "Usa switch/case para definir o preço do produto a partir do código informado.",
+    "createdAt": "03/09/2026 09:35",
+    "linesCount": 26,
+    "code": "#include <stdio.h>\nint main() {\n    int codigo, quantidade;\n    float precoProduto, precoFinal;\n    printf(\"Informe o código do item:\");\n    scanf(\"%d\", &codigo);\n    printf(\"Informe a quantidade desejada:\");\n    scanf(\"%d\", &quantidade);\n    switch (codigo)\n    {\n        case 100: precoProduto = 3.50;\n                  break;\n        case 101: precoProduto = 4.50;\n                  break;\n        case 102: precoProduto = 5.20;\n                  break;\n        case 103: precoProduto = 3.00;\n                  break;\n        case 104: precoProduto = 4.00;\n                  break;\n        case 105: precoProduto = 2.50;\n                  break;\n    }\n    precoFinal = precoProduto * quantidade;\n    printf(\"O valor a ser pago é de R$ %.2f\", precoFinal);\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-2-5",
+    "exerciseId": "ex-2-5",
+    "author": "Anderson",
+    "comment": "Calcula o preço final dentro de cada bloco else if, sem separar a lógica em duas etapas.",
+    "createdAt": "13/08/2026 21:10",
+    "linesCount": 32,
+    "code": "#include <stdio.h>\nint main()\n{\n    int codigo, quantidade;\n    float preco;\n    printf(\"Digite um código entre os itens a seguir: \\n Código 100 - Cachorro quente - R$ 3,50 \\n Código 101 - Bauru simples - R$ 4.50 \\n Código 102 - Bauru com ovo - R$ 5,20 \\n Código 103 - Hambúrguer - R$ 3,00 \\n Código 104 - Cheeseburguer - R$ 4,00 \\n - Código 105 - Refrigerante - R$ 2,50 \\n\");\n    scanf(\"%d\", &codigo);\n    printf(\"Digite a quantidade de um item \\n\");\n    scanf(\"%d\", &quantidade);\n    if (codigo == 100)\n    {\n        preco = 3.50 * quantidade;\n        printf(\"%f R$\", preco);\n    }\n    else if (codigo == 101)\n    {\n        preco = 4.50 * quantidade;\n        printf(\"%f R$\", preco);\n    }\n    else if (codigo == 102)\n    {\n        preco = 5.20 * quantidade;\n        printf(\"%f R$\", preco);\n    }\n    else if (codigo == 103)\n    {\n        preco = 3.00 * quantidade;\n        printf(\"%f R$\", preco);\n    }\n    else if (codigo == 104)\n    {\n        preco = 4.00 * quantidade;\n        printf(\"%f R$\", preco);\n    }\n    else if (codigo == 105)\n    {\n        preco = 2.50 * quantidade;\n        printf(\"%f R$\", preco);\n    }\n    else\n    {\n        printf(\"Escolha inválida. Responda apenas com um valor entre 100 e 105\");\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-2-6a",
+    "exerciseId": "ex-2-6",
+    "author": "Estudante Anônimo",
+    "comment": "Ordena determinando maior, médio e menor primeiro, depois escolhe a impressão com switch(i).",
+    "createdAt": "03/09/2026 09:45",
+    "linesCount": 55,
+    "code": "#include <stdio.h>\nint main()\n{\n    int i, a, b, c;\n    int maior, medio, menor;\n    do {\n        printf(\"Insira um numero de 1 a 3:\\n\");\n        scanf(\"%d\", &i);\n        if (i < 1 || i > 3) {\n            printf(\"Opcao invalida!\\n\");\n        }\n    } while (i < 1 || i > 3);\n    printf(\"Insira 3 numeros:\\n\");\n    scanf(\"%d %d %d\", &a, &b, &c);\n    if (a>=b && a>=c) {\n        maior=a;\n        if (b>=c) { medio=b; menor=c; }\n        else { medio=c; menor=b; }\n    }\n    else if (b>=c) {\n        maior=b;\n        if (a>=c) { medio=a; menor=c; }\n        else { medio=c; menor=a; }\n    }\n    else {\n        maior=c;\n        if(a>=b) { medio=a; menor=b; }\n        else { medio=b; menor=a; }\n    }\n    switch(i) {\n        case 1:\n            printf(\"%d, %d, %d\\n\", menor, medio, maior);\n            break;\n        case 2:\n            printf(\"%d, %d, %d\\n\", maior, medio, menor);\n            break;\n        case 3:\n            printf(\"%d, %d, %d\\n\", menor, maior, medio);\n            break;\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-2-6",
+    "exerciseId": "ex-2-6",
+    "author": "Anderson",
+    "comment": "Testa cada valor de i separadamente e refaz as comparações de ordem dentro de cada ramo.",
+    "createdAt": "13/08/2026 21:15",
+    "linesCount": 60,
+    "code": "#include <stdio.h>\nint main()\n{\n    int numero, a, b, c;\n    printf(\"Digite 1 para ordem crescente, 2 para ordem decrescente e 3 para o maior no meio \\n\");\n    scanf(\"%d\", &numero);\n    printf(\"Digite um segundo número \\n\");\n    scanf(\"%d\", &a);\n    printf(\"Digite um terceiro número \\n\");\n    scanf(\"%d\", &b);\n    printf(\"Digite um quarto número \\n\");\n    scanf(\"%d\", &c);\n    if (numero == 1)\n    {\n        if (a >= b && a >= c)\n        {\n            if (b > c) { printf(\"%d, %d, %d\", c, b, a); }\n            else { printf(\"%d, %d, %d\", b, c, a); }\n        }\n        else if (b >= a && b >= c)\n        {\n            if (a > c) { printf(\"%d, %d, %d\", c, a, b); }\n            else { printf(\"%d, %d, %d\", a, c, b); }\n        }\n        else\n        {\n            if (a > b) { printf(\"%d, %d, %d\", b, a, c); }\n            else { printf(\"%d, %d, %d\", a, b, c); }\n        }\n    }\n    else if (numero == 2)\n    {\n        if (a <= b && a <= c)\n        {\n            if (b < c) { printf(\"%d, %d, %d\", c, b, a); }\n            else { printf(\"%d, %d, %d\", b, c, a); }\n        }\n        else if (b <= a && b <= c)\n        {\n            if (a < c) { printf(\"%d, %d, %d\", c, a, b); }\n            else { printf(\"%d, %d, %d\", a, c, b); }\n        }\n        else\n        {\n            if (a < b) { printf(\"%d, %d, %d\", b, a, c); }\n            else { printf(\"%d, %d, %d\", a, b, c); }\n        }\n    }\n    else if (numero == 3)\n    {\n        if (a >= b && a >= c)\n        {\n            if (b > c) { printf(\"%d, %d, %d\", c, a, b); }\n            else { printf(\"%d, %d, %d\", b, a, c); }\n        }\n        else if (b >= a && b >= c)\n        {\n            if (a > c) { printf(\"%d, %d, %d\", c, b, a); }\n            else { printf(\"%d, %d, %d\", a, b, c); }\n        }\n        else\n        {\n            if (a > b) { printf(\"%d, %d, %d\", b, c, a); }\n            else { printf(\"%d, %d, %d\", a, c, b); }\n        }\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-3-1",
+    "exerciseId": "ex-3-1",
+    "author": "Anderson",
+    "comment": "Compara ano, mês e dia em cascata usando else if para determinar a data mais recente.",
+    "createdAt": "13/08/2026 21:20",
+    "linesCount": 35,
+    "code": "#include <stdio.h>\nint main()\n{\n    int dia1, mes1, ano1, dia2, mes2, ano2;\n    printf(\"Escreva um dia\\n\");\n    scanf(\"%d\", &dia1);\n    printf(\"Escreva um mês\\n\");\n    scanf(\"%d\", &mes1);\n    printf(\"Escreva um ano\\n\");\n    scanf(\"%d\", &ano1);\n    printf(\"Escreva um segundo dia\\n\");\n    scanf(\"%d\", &dia2);\n    printf(\"Escreva um segundo mês\\n\");\n    scanf(\"%d\", &mes2);\n    printf(\"Escreva um segundo ano\\n\");\n    scanf(\"%d\", &ano2);\n    if (ano1 < ano2)\n    {\n        printf(\"A data mais recente é a %d, %d, %d \", dia2, mes2, ano2);\n    }\n    else if (ano1 > ano2)\n    {\n        printf(\"A data mais recente é a %d, %d, %d \", dia1, mes1, ano1);\n    }\n    else if (ano1 == ano2)\n    {\n        if (mes1 < mes2)\n        {\n            printf(\"A data mais recente é a %d, %d, %d \", dia2, mes2, ano2);\n        }\n        else if (mes1 > mes2)\n        {\n            printf(\"A data mais recente é a %d, %d, %d \", dia1, mes1, ano1);\n        }\n        else if (dia1 < dia2)\n        {\n            printf(\"A data mais recente é a %d, %d, %d \", dia2, mes2, ano2);\n        }\n        else if (dia1 > dia2)\n        {\n            printf(\"A data mais recente é a %d, %d, %d \", dia1, mes1, ano1);\n        }\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-3-2",
+    "exerciseId": "ex-3-2",
+    "author": "Anderson",
+    "comment": "Lê a letra da figura escolhida e calcula a área com else if, tratando entrada inválida.",
+    "createdAt": "13/08/2026 21:25",
+    "linesCount": 40,
+    "code": "#include <stdio.h>\nint main()\n{\n    float aretangulo, aquadrado, atriangulo, raio, base, altura, lado;\n    double acirculo;\n    char escolha;\n    printf(\"Digite a letra da figura desejada: \\n[C]írculo, [R]etângulo, [Q]uadrado ou [T]riângulo \\n\");\n    scanf(\"%c\", &escolha);\n    if (escolha == 'C')\n    {\n        printf(\"Digite o raio do círculo \");\n        scanf(\"%f\", &raio);\n        acirculo = 3.14159 * raio * raio;\n        printf(\"Área do círculo é %lf \", acirculo);\n    }\n    else if (escolha == 'R')\n    {\n        printf(\"Digite a base do retângulo \");\n        scanf(\"%f\", &base);\n        printf(\"Digite a altura do retângulo \");\n        scanf(\"%f\", &altura);\n        aretangulo = base * altura;\n        printf(\"A área do retângulo é %f \", aretangulo);\n    }\n    else if (escolha == 'Q')\n    {\n        printf(\"Digite o lado do quadrado \");\n        scanf(\"%f\", &lado);\n        aquadrado = lado * lado;\n        printf(\"A área do quadrado é %f \", aquadrado);\n    }\n    else if (escolha == 'T')\n    {\n        printf(\"Digite a base do triângulo \");\n        scanf(\"%f\", &base);\n        printf(\"Digite a altura do triângulo \");\n        scanf(\"%f\", &altura);\n        atriangulo = (base * altura) / 2;\n        printf(\"A área do triângulo é %f \", atriangulo);\n    }\n    else\n    {\n        printf(\"Escolha inválida. Responda apenas com um valor entre C, R, Q ou T\");\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-3-3",
+    "exerciseId": "ex-3-3",
+    "author": "Anderson",
+    "comment": "Separa centena, dezena e unidade e monta o novo número testando qual dígito é maior/menor.",
+    "createdAt": "13/08/2026 21:30",
+    "linesCount": 45,
+    "code": "#include <stdio.h>\nint main()\n{\n    int n1, n2, centena, dezena, unidade;\n    printf(\"Digite um numero entre 100 e 999 \\n\");\n    scanf(\"%d\", &n1);\n    if (n1 < 100 || n1 > 999)\n    {\n        printf(\"Numero %d e invalido \", n1);\n    }\n    else\n    {\n        centena = n1 / 100;\n        dezena = (n1 / 10) % 10;\n        unidade = n1 % 10;\n        if (centena >= dezena && centena >= unidade)\n        {\n            if (dezena > unidade)\n            {\n                n2 = (unidade * 100) + (dezena * 10) + (centena * 1);\n            }\n            else\n            {\n                n2 = (dezena * 100) + (unidade * 10) + (centena * 1);\n            }\n        }\n        else if (dezena >= centena && dezena >= unidade)\n        {\n            if (centena > unidade)\n            {\n                n2 = (unidade * 100) + (centena * 10) + (dezena * 1);\n            }\n            else\n            {\n                n2 = (centena * 100) + (unidade * 10) + (dezena * 1);\n            }\n        }\n        else\n        {\n            if (centena > dezena)\n            {\n                n2 = (dezena * 100) + (centena * 10) + (unidade * 1);\n            }\n            else\n            {\n                n2 = (centena * 100) + (dezena * 10) + (unidade * 1);\n            }\n        }\n        printf(\"%d\", n2);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-4-1",
+    "exerciseId": "ex-4-1",
+    "author": "Anderson",
+    "comment": "Percorre de 1 até N testando o resto da divisão por Y, avisando se nenhum múltiplo for encontrado.",
+    "createdAt": "13/08/2026 21:35",
+    "linesCount": 25,
+    "code": "#include <stdio.h>\nint main()\n{\n    int n, y, i;\n    int encontrou = 0;\n    printf(\"Digite um numero inteiro positivo\\n\");\n    scanf(\"%d\", &n);\n    printf(\"Digite outro numero inteiro positivo\\n\");\n    scanf(\"%d\", &y);\n    printf(\"Os multiplos do segundo numero menores do primeiro sao...\\n\");\n    for (i = 1; i < n; i++)\n    {\n        if (i % y == 0)\n        {\n            printf(\"%d\", i);\n            encontrou = 1;\n        }\n    }\n    if (encontrou == 0)\n    {\n        printf(\"Nenhum multiplo encontrado!\");\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-4-2",
+    "exerciseId": "ex-4-2",
+    "author": "Anderson",
+    "comment": "Usa um único laço for imprimindo o índice i e seu complemento (51 - i) a cada passo.",
+    "createdAt": "13/08/2026 21:40",
+    "linesCount": 15,
+    "code": "#include <stdio.h>\nint main()\n{\n    int b = 50;\n    int i;\n    for (i = 1; i <= b; i++)\n    {\n        printf(\"%d, \", i);\n        printf(\"%d, \\n\", (b + 1) - i);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-4-3",
+    "exerciseId": "ex-4-3",
+    "author": "Anderson",
+    "comment": "Converte os anos em meses e aplica o rendimento composto mês a mês, imprimindo cada atualização.",
+    "createdAt": "13/08/2026 21:45",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\nint main()\n{\n    float capital, rendimento, montante;\n    int anos, i;\n    printf(\"Digite o capital inicial investido\\n\");\n    scanf(\"%f\", &capital);\n    printf(\"Digite a porcentagem do rendimento fixo mensal\\n\");\n    scanf(\"%f\", &rendimento);\n    printf(\"Digite a quantidade de anos do investimento\\n\");\n    scanf(\"%d\", &anos);\n    montante = capital;\n    anos = anos * 12;\n    for (i = 1; i <= anos; i++)\n    {\n        montante = montante * (1 + rendimento / 100);\n        printf(\"%.2f \\n\", montante);\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-4-4a",
+    "exerciseId": "ex-4-4",
+    "author": "Estudante Anônimo",
+    "comment": "Usa 5 leituras em vez de 300 para facilitar o teste, mas mantém a mesma lógica de contagem.",
+    "createdAt": "03/09/2026 09:50",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\nint main()\n{\n    int i;\n    int QN = 0;\n    int QP = 0;\n    float numero;\n    float SP = 0.0;\n    for (i = 1; i <= 5; i++)\n    {\n        printf(\"Entre com um numero: \");\n        scanf(\"%f\", &numero);\n        if (numero < 0)\n        {\n            QN++;\n        }\n        else if (numero > 0)\n        {\n            QP++;\n            SP = SP + numero;\n        }\n    }\n    float media = SP / QP;\n    printf(\"Quantidade de numeros negativos %d\\n\", QN);\n    printf(\"A média de numeros positivos é: %f\\n\", media);\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-4-4",
+    "exerciseId": "ex-4-4",
+    "author": "Anderson",
+    "comment": "Lê as 300 leituras completas, separando contagem de positivos e negativos em variáveis distintas.",
+    "createdAt": "13/08/2026 21:50",
+    "linesCount": 24,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    float n = 300, negativo = 0, input, soma = 0;\n    int positivo = 0, i;\n    for (i = 1; i <= n; i++)\n    {\n        printf(\"Digite um numero real\\n\");\n        scanf(\"%f\", &input);\n        if (input < 0)\n        {\n            negativo = negativo + 1;\n        }\n        else\n        {\n            positivo = positivo + 1;\n            soma += input;\n        }\n    }\n    printf(\"Negativos: %.0f\\n\", negativo);\n    printf(\"Positivos: %d\\n\", positivo);\n    printf(\"Media dos positivos: %f\\n\", soma / positivo);\n}"
+  },
+  {
+    "id": "res-anderson-4-5",
+    "exerciseId": "ex-4-5",
+    "author": "Anderson",
+    "comment": "Testa a paridade do índice para decidir o sinal do termo impresso.",
+    "createdAt": "13/08/2026 21:55",
+    "linesCount": 13,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int i;\n    for (i = 1; i <= 50; i++)\n    {\n        if (i % 2 == 0)\n        {\n            printf(\"%d, \", -i);\n        }\n        else\n        {\n            printf(\"%d, \", i);\n        }\n    }\n}"
+  },
+  {
+    "id": "res-anderson-4-6",
+    "exerciseId": "ex-4-6",
+    "author": "Anderson",
+    "comment": "Percorre de 1 a 99 comparando a soma de dezena e unidade com o N informado.",
+    "createdAt": "13/08/2026 22:00",
+    "linesCount": 20,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int n, i, dezena, unidade;\n    printf(\"Digite um numero menor que 18\\n\");\n    scanf(\"%d\", &n);\n    if (n <= 18)\n    {\n        for (i = 1; i <= 99; i++)\n        {\n            dezena = i / 10;\n            unidade = i % 10;\n            if (dezena + unidade == n)\n            {\n                printf(\"%d \", i);\n            }\n        }\n    }\n    else if (n > 18)\n    {\n        printf(\"Escolha inválida\");\n    }\n}"
+  },
+  {
+    "id": "res-anon-4-7a",
+    "exerciseId": "ex-4-7",
+    "author": "Estudante Anônimo",
+    "comment": "Usa espaço antes de %c no scanf pra ignorar o buffer, com respostas G/N e gêneros M/F.",
+    "createdAt": "03/09/2026 10:00",
+    "linesCount": 38,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    char genero, opiniao;\n    int pessoas, i, gostou = 0, naoGostou = 0, homensGostaram = 0, mulheresGostaram = 0;\n    printf(\"Digite quantas pessoas foram entrevistadas\\n\");\n    scanf(\"%d\", &pessoas);\n    for (i = 1; i <= pessoas; i++)\n    {\n        printf(\"Escreva M se masculino ou F se feminino\\n\");\n        scanf(\" %c\", &genero);\n        printf(\"Escreva G se gostou ou N se nao gostou\\n\");\n        scanf(\" %c\", &opiniao);\n        if (opiniao == 'G')\n        {\n            gostou += 1;\n            if (genero == 'M')\n            {\n                homensGostaram += 1;\n            }\n            else if (genero == 'F')\n            {\n                mulheresGostaram += 1;\n            }\n        }\n        else if (opiniao == 'N')\n        {\n            naoGostou += 1;\n        }\n    }\n    printf(\"%d\\n\", gostou);\n    printf(\"%d\\n\", naoGostou);\n    if (homensGostaram > mulheresGostaram)\n    {\n        printf(\"Homens gostaram mais\");\n    }\n    else if (homensGostaram < mulheresGostaram)\n    {\n        printf(\"Mulheres gostaram mais\");\n    }\n    else if (homensGostaram == mulheresGostaram)\n    {\n        printf(\"Empate\");\n    }\n}"
+  },
+  {
+    "id": "res-anon-4-7b",
+    "exerciseId": "ex-4-7",
+    "author": "Estudante Anônimo",
+    "comment": "Usa fflush(stdin) em vez do espaço antes do %c, e letras h/m e s/n como códigos de resposta.",
+    "createdAt": "03/09/2026 10:05",
+    "linesCount": 44,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int i, pessoas, gostaram = 0, naoGostaram = 0, homemGostou = 0, mulherGostou = 0;\n    char respostaGostou, genero;\n    printf(\"quantas pessoas\\n\");\n    scanf(\"%i\", &pessoas);\n    for (i = 0; i < pessoas; i++)\n    {\n        printf(\"informe seu genero: [m] ou [h]\\n\");\n        scanf(\"%c\", &genero);\n        fflush(stdin);\n        printf(\"gostou? [s] ou [n]\\n\");\n        scanf(\"%c\", &respostaGostou);\n        fflush(stdin);\n        if (respostaGostou == 's')\n        {\n            gostaram++;\n            if (genero == 'h')\n            {\n                homemGostou++;\n            }\n            else if (genero == 'm')\n            {\n                mulherGostou++;\n            }\n        }\n        else if (respostaGostou == 'n')\n        {\n            naoGostaram++;\n        }\n        else\n        {\n            printf(\"resposta invalida\\n\");\n        }\n    }\n    printf(\"Numero de pessoas que gostaram do produto%d\\n\", gostaram);\n    printf(\"Numero de pessoas que nao gostaram do produto%d\\n\", naoGostaram);\n    if (homemGostou > mulherGostou)\n    {\n        printf(\"O genero que o produto teve uma melhor aceitacao foram os homens\");\n    }\n    else if (mulherGostou > homemGostou)\n    {\n        printf(\"O genero que o produto teve uma melhor aceitacao foram as mulheres\");\n    }\n    else\n    {\n        printf(\"O genero que o produto teve uma melhor deu empate\");\n    }\n}"
+  },
+  {
+    "id": "res-anon-4-8a",
+    "exerciseId": "ex-4-8",
+    "author": "Estudante Anônimo",
+    "comment": "Calcula idade de ingresso subtraindo o tempo de empresa da idade atual, acumulando médias e extremos.",
+    "createdAt": "03/09/2026 10:10",
+    "linesCount": 55,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int matricula, idade, salario, tempo, i, menosVinteUm = 0, generoF = 0, generoM = 0, salarioM = 1, mediaM, maiorTempo = 0, menorTempo = 999, matriculaVelha, matriculaNova;\n    char genero;\n    for (i = 1; i <= 2; i++)\n    {\n        printf(\"Informe sua matricula\\n\");\n        scanf(\"%d\", &matricula);\n        printf(\"Escreva M se seu genero for masculino e F se for feminino\\n\");\n        scanf(\" %c\", &genero);\n        printf(\"Informe sua idade\\n\");\n        scanf(\"%d\", &idade);\n        printf(\"Informe seu salario\\n\");\n        scanf(\"%d\", &salario);\n        printf(\"Informe o tempo em anos de trabalho na empresa\\n\");\n        scanf(\"%d\", &tempo);\n        if (idade - tempo < 21)\n        {\n            menosVinteUm++;\n        }\n        if (genero == 'F')\n        {\n            generoF++;\n        }\n        if (genero == 'M')\n        {\n            generoM++;\n            salarioM += salario;\n            mediaM = salarioM / generoM;\n        }\n        if (tempo > maiorTempo)\n        {\n            maiorTempo = tempo;\n            matriculaVelha = matricula;\n        }\n        if (tempo < menorTempo)\n        {\n            menorTempo = tempo;\n            matriculaNova = matricula;\n        }\n    }\n    printf(\"Quantidade de funcionários que ingressaram na empresa com menos de 21 anos %d\\n\", menosVinteUm);\n    printf(\"Quantidade de funcionários do gênero feminino %d\\n\", generoF);\n    printf(\"Média salarial dos homens %d\\n\", mediaM);\n    printf(\"Matrícula dos funcionários mais antigo %d e mais novo %d\", matriculaVelha, matriculaNova);\n}"
+  },
+  {
+    "id": "res-anderson-5-1",
+    "exerciseId": "ex-5-1",
+    "author": "Anderson",
+    "comment": "Percorre de 0 até N testando a paridade de cada número com o resto da divisão por 2.",
+    "createdAt": "13/08/2026 22:05",
+    "linesCount": 15,
+    "code": "#include <stdio.h>\nint main()\n{\n    int n, i;\n    printf(\"Informe um numero\\n\");\n    scanf(\"%d\", &n);\n    for (i = 0; i <= n; i++)\n    {\n        if (i % 2 == 0)\n        {\n            printf(\"%d, \", i);\n        }\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-5-2",
+    "exerciseId": "ex-5-2",
+    "author": "Anderson",
+    "comment": "Acumula a soma dentro do próprio laço for, de 0 até N.",
+    "createdAt": "13/08/2026 22:10",
+    "linesCount": 14,
+    "code": "#include <stdio.h>\nint main()\n{\n    int n, i, soma = 0;\n    printf(\"Informe um numero\\n\");\n    scanf(\"%d\", &n);\n    for (i = 0; i <= n; i++)\n    {\n        soma += i;\n    }\n    printf(\"%d\", soma);\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-5-3",
+    "exerciseId": "ex-5-3",
+    "author": "Anderson",
+    "comment": "Testa de 1 até N quais valores dividem N sem deixar resto.",
+    "createdAt": "13/08/2026 22:15",
+    "linesCount": 13,
+    "code": "#include <stdio.h>\nint main()\n{\n    int n, i;\n    printf(\"Informe um numero\\n\");\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++)\n    {\n        if (n % i == 0)\n        {\n            printf(\"%d \", i);\n        }\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anderson-5-4",
+    "exerciseId": "ex-5-4",
+    "author": "Anderson",
+    "comment": "Gera cada termo somando i vezes a razão ao primeiro termo, sem variável acumuladora.",
+    "createdAt": "13/08/2026 22:20",
+    "linesCount": 17,
+    "code": "#include <stdio.h>\nint main()\n{\n    int primeiroTermo, razao, qtdTermos, i;\n    printf(\"Informe o primeiro termo de uma progressao aritmetica\\n\");\n    scanf(\"%d\", &primeiroTermo);\n    printf(\"Informe a quantidade de termos de uma progressao aritmetica\\n\");\n    scanf(\"%d\", &qtdTermos);\n    printf(\"Informe a razao de uma progressao aritmetica\\n\");\n    scanf(\"%d\", &razao);\n    for (i = 0; i < qtdTermos; i++)\n    {\n        printf(\"%d \", primeiroTermo + (i * razao));\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-5-5a",
+    "exerciseId": "ex-5-5",
+    "author": "Estudante Anônimo",
+    "comment": "Multiplica a potência por 2 a cada iteração do for, começando em 1.",
+    "createdAt": "10/09/2026 09:00",
+    "linesCount": 14,
+    "code": "#include <stdio.h>\nint main()\n{\n    int i, n;\n    double potencia = 1;\n    printf(\"Informe um numero\\n\");\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n    {\n        printf(\"%.0f \", potencia);\n        potencia *= 2;\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-5-6a",
+    "exerciseId": "ex-5-6",
+    "author": "Estudante Anônimo",
+    "comment": "Usa uma variável multiplicador que também dobra a cada passo, aplicada ao termo atual.",
+    "createdAt": "10/09/2026 09:05",
+    "linesCount": 14,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int i, n, multiplicador = 2;\n    double termo = 1;\n    printf(\"informe um numero\\n\");\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n    {\n        printf(\"%.0f \", termo);\n        termo *= multiplicador;\n        multiplicador *= 2;\n    }\n}"
+  },
+  {
+    "id": "res-anderson-5-7",
+    "exerciseId": "ex-5-7",
+    "author": "Anderson",
+    "comment": "Lê a quantidade de números primeiro e depois acumula produto dos ímpares e soma dos pares.",
+    "createdAt": "13/08/2026 22:25",
+    "linesCount": 22,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int n, i, produtoImpar = 1, somaPar = 0;\n    int unsigned numero;\n    printf(\"informe uma quantidade de numeros\\n\");\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n    {\n        printf(\"informe o numero\\n\");\n        scanf(\"%u\", &numero);\n        if (numero % 2 == 0)\n        {\n            somaPar += numero;\n        }\n        if (numero % 2 == 1)\n        {\n            produtoImpar *= numero;\n        }\n    }\n    printf(\"Produto dos numeros impares foi %d\\n\", produtoImpar);\n    printf(\"Soma dos numeros pares foi %d\\n\", somaPar);\n}"
+  },
+  {
+    "id": "res-anderson-5-8",
+    "exerciseId": "ex-5-8",
+    "author": "Anderson",
+    "comment": "Usa laço duplo: externo por motorista, interno por multa, guardando quem teve mais multas.",
+    "createdAt": "13/08/2026 22:30",
+    "linesCount": 33,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int idCarteira, qtdMultas, qtdMotoristas, i, j, maiorMulta = 0, maiorMultaId = 0;\n    float valorMultas, somaMultas = 0;\n    printf(\"informe a quantidade de motoristas\\n\");\n    scanf(\"%d\", &qtdMotoristas);\n    for (i = 0; i < qtdMotoristas; i++)\n    {\n        printf(\"informe o numero da carteira\\n\");\n        scanf(\"%d\", &idCarteira);\n        printf(\"informe a quantidade de multas\\n\");\n        scanf(\"%d\", &qtdMultas);\n        for (j = 0; j < qtdMultas; j++)\n        {\n            printf(\"informe o valor da multa\\n\");\n            scanf(\"%f\", &valorMultas);\n            printf(\"%f R$ \\n\", valorMultas);\n            somaMultas += valorMultas;\n        }\n        if (qtdMultas > maiorMulta)\n        {\n            maiorMulta = qtdMultas;\n            maiorMultaId = idCarteira;\n        }\n    }\n    printf(\"%.2f\\n\", somaMultas);\n    printf(\"%d %d \\n\", maiorMulta, maiorMultaId);\n}"
+  },
+  {
+    "id": "res-anderson-5-9",
+    "exerciseId": "ex-5-9",
+    "author": "Anderson",
+    "comment": "Usa while contando as ocorrências até achar a quinta, incrementando o número a cada passo.",
+    "createdAt": "13/08/2026 22:35",
+    "linesCount": 13,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int n = 1000, numero = 0;\n    while (numero < 5)\n    {\n        n++;\n        if (n % 11 == 5)\n        {\n            printf(\"%d \", n);\n            numero++;\n        }\n    }\n}"
+  },
+  {
+    "id": "res-anon-5-9a",
+    "exerciseId": "ex-5-9",
+    "author": "Estudante Anônimo",
+    "comment": "Usa for com break assim que atinge o quinto valor, em vez de condição no while.",
+    "createdAt": "10/09/2026 09:10",
+    "linesCount": 20,
+    "code": "#include <stdio.h>\nint main()\n{\n    int n = 1000, i, maiorQueCinco = -999, contador = 0;\n    for (i = n; i >= n; i++)\n    {\n        if (i % 11 == 5)\n        {\n            maiorQueCinco = i;\n            printf(\"%d\\n\", maiorQueCinco);\n            contador++;\n        }\n        if (contador == 5)\n        {\n            break;\n        }\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "res-anon-5-10a",
+    "exerciseId": "ex-5-10",
+    "author": "Estudante Anônimo",
+    "comment": "Coleta gênero e altura de cada pessoa, atualizando extremos e acumuladores de média a cada leitura.",
+    "createdAt": "10/09/2026 09:15",
+    "linesCount": 45,
+    "code": "#include <stdio.h>\nvoid main()\n{\n    int i;\n    float altura, maiorAltura = -999, menorAltura = 999, mediaAlturaMulheres = 0, qtdMulheres = 0, mediaAlturaPopulacao = 0, percentualHomens = 0;\n    char genero;\n    for (i = 0; i < 50; i++)\n    {\n        printf(\"informe [h] para homem e [m] para mulher\\n\");\n        scanf(\"%c\", &genero);\n        fflush(stdin);\n        printf(\"informe a altura\\n\");\n        scanf(\"%f\", &altura);\n        if (altura < menorAltura)\n        {\n            menorAltura = altura;\n        }\n        if (altura > maiorAltura)\n        {\n            maiorAltura = altura;\n        }\n        if (genero == 'm')\n        {\n            qtdMulheres++;\n            mediaAlturaMulheres += altura;\n        }\n        if (genero == 'h')\n        {\n            percentualHomens++;\n        }\n        mediaAlturaPopulacao += altura;\n    }\n    mediaAlturaMulheres /= qtdMulheres;\n    mediaAlturaPopulacao /= i;\n    percentualHomens = (percentualHomens / i) * 100;\n    printf(\"A maior altura foi %.2f\\n\", maiorAltura);\n    printf(\"A menor altura foi %.2f\\n\", menorAltura);\n    printf(\"Media de altura entre mulheres foi %.2f\\n\", mediaAlturaMulheres);\n    printf(\"Media de altura entre a populacao foi %.2f\\n\", mediaAlturaPopulacao);\n    printf(\"Percentual de homens foi %.2f %%\\n\", percentualHomens);\n}"
   }
 ]
