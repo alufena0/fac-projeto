@@ -1,4 +1,4 @@
-# FAC — Banco de Resoluções da Turma
+# FAC Banco de Resoluções da Turma
 
 Banco de resoluções de exercícios em linguagem C da disciplina de
 Fundamentos de Algoritmos de Computação (FAC).
