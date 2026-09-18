@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# FAC — Banco de Resoluções da Turma
 
-# Run and deploy your AI Studio app
+Banco de resoluções de exercícios em linguagem C da disciplina de
+Fundamentos de Algoritmos de Computação (FAC).
 
-This contains everything you need to run your app locally.
+## Rodando localmente
 
-View your app in AI Studio: https://ai.studio/apps/04416dc9-b7e5-40ac-9327-9f5d8b32daee
+**Pré-requisitos:** Node.js 22+
 
-## Run Locally
+1. Instale as dependências:
+   ```
+   npm install
+   ```
+2. Copie `.env.example` para `.env.local` e preencha a variável de conexão
+   com o banco (Postgres/Neon), se aplicável.
+3. Rode o servidor de desenvolvimento:
+   ```
+   npm run dev
+   ```
 
-**Prerequisites:**  Node.js
+## Build de produção
 
+```
+npm run build
+npm run start
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Stack
+
+- React 19 + React Router
+- Vite 8
+- Express (servidor + API de resoluções)
+- Tailwind CSS
+- Postgres (Neon) para persistência das resoluções enviadas
